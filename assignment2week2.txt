@@ -1,0 +1,41 @@
+1. Eplain in detail what happens when you type www.google.com?
+A.            There are series of events that happen when we type in www.google.com into browser’s address bar from a given location, we will cover few main steps here -
+
+*User enters www.google.com into the address bar
+
+*Browser checks if the typed address is www url or the search term, if it is search term then it 
+          will use pre configured web search server (may be google or bing, etc) to search the typed term from web.
+
+*If the requested Object is in browser’s cache and cache is valid, content is rendered from cache, otherwise
+
+*DNS Lookup takes place - Browser resolves the IP address for the mentioned server (www.google.com)
+
+ *It checks in the browser cache
+           * Checks the OS Cache.
+           * Checks the router cache.
+           *Checks the ISP cach** DNS recursive search until it reaches authoritative DNS Server. 
+                   If multiple ip addresses are found for a given server address, then DNS Round Robin algorithm picks up any one for the further communication. 
+If it does not recognize the domain then it gives error message. We can use command on windows to check what all IP addresses are mapped to this www.google.com domain, 
+incase they are multiple DNS server will use round robin algorithm to pick up any one from the list.
+*Google.co.in receives the request the decodes the user and send the appropriate HTML response including headers (status code 200 OK, content type, etc)
+*The Browser receives the response and begins to parse it for display. if it is compressed, browser will decompress it, The HTML body will include links to css, images, js. 
+        All these links will trigger additional calls back to server to retrieve those files. CDN (Content Delivery Networks) may serve these static resource requests to speedup the process.
+*Browser layout engine will start to assemble the final page for display. css, js information may alter the layout of the page.
+*The final page is assembled and rendered to the user.
+*After this the browser may send further AJAX request to communicate with the web server even after the page is rendered.
+
+
+2.Difference between Horizontal Scaling and Vertical Scaling?
+A.        Horizontal scaling:
+                     Horizontal scaling means that you scale by adding more machines into your pool of resources.   
+            Vertical scaling:
+                     Vertical scaling means that you scale by adding more power (CPU, RAM) to an existing machine.
+                         
+               HORIZONTAL SCALING                                                                             VERTICAL SCALING
+          *It expands the size of the existing system horizontally.	                    *It expands the size of the existing system vertically.
+          *It is difficult to implement.	                                                    *It is easy to implement.
+          *It expands the size of the existing system horizontally.	                    *It expands the size of the existing system vertically.
+          *It is difficult to implement.	                                                    *It is easy to implement.
+          *It is costlier, as new server racks comprises of a lot of resources.	     *It is cheaper as we need to just add new resources.
+
+              
